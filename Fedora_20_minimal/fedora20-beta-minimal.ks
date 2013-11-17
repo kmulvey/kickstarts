@@ -33,10 +33,10 @@ text
 
 # Setup the disk
 zerombr
-clearpart --all --drives=xvda
+clearpart --all --drives=sda
 part / --fstype=ext4 --grow --size=1024 --asprimary
 part swap --size=512
-bootloader --location=none --timeout=5 --driveorder=xvda
+bootloader --location=none --timeout=5 --driveorder=sda
 
 # Reboot when the kickstart is done
 reboot
@@ -64,7 +64,7 @@ default=0
 timeout=5
 title Fedora (${KERNELSTRING})
 	root (hd0,0)
-	kernel /boot/vmlinuz-${KERNELSTRING} ro root=/dev/xvda1 console=hvc0 quiet
+	kernel /boot/vmlinuz-${KERNELSTRING} ro root=/dev/sda1 console=hvc0 quiet
 	initrd /boot/initramfs-${KERNELSTRING}.img
 EOF
 
